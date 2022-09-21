@@ -9,6 +9,15 @@ const cors = require('cors');
 // allow cross-origin resource sharing (CORS)
 app.use(cors());
 
+//added in during week 30 for testing purposes
+function index(req, res) {
+    res.send('hello world!');
+};
+
+app.use('/hello', index);
+
+
+
 // data parser - used to parse post data
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,9 +33,11 @@ db.defaults({ users: [] }).write();
 let port = process.env.PORT || 3000;
 
 // return all users
-app.get('/data', function (req, res) {
+function returnAllUsers(req, res) {
     res.send(db.get('users').value());
-});
+};
+
+app.get('/data', returnAllUsers);
 
 // add user
 app.post('/add', function (req, res) {
@@ -53,3 +64,5 @@ app.post('/add', function (req, res) {
 app.listen(port, function () {
     console.log(`Running on port ${port}`);
 });
+
+
