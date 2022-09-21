@@ -4,7 +4,7 @@ const request = require('supertest');
 
 const app = express();
 app.use('/hello', function (req, res) {
-    res.send('hello world!');
+    res.send('hello word!');
 });
 
 describe('Hello Route Works', function () {
