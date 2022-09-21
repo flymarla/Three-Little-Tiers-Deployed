@@ -10,11 +10,9 @@ const cors = require('cors');
 app.use(cors());
 
 //added in during week 30 for testing purposes
-function index(req, res) {
+app.use('/hello', function (req, res) {
     res.send('hello world!');
-};
-
-app.use('/hello', index);
+});
 
 
 
